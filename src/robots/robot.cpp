@@ -1,7 +1,11 @@
 #include "robots/robot.h"
+#include "helpers.h"
 
-Robot::Robot(float v_x, float v_y, float p_x, float p_y, float size, float direction) : velocity_x{v_x}, velocity_y{v_y},
-                                                                                        posn{p_x, p_y}, size{size > 0 ? size : 1}, direction{direction} {}
+Robot::Robot(float v_x, float v_y, float p_x, float p_y, float size, float direction, float mass, float max_speed, float speed_incr) : max_speed{max_speed}, speed_incr{speed_incr}, mass{mass},
+                                                                                                                                       posn{p_x, p_y}, size{size > 0 ? size : 1}, direction{direction}
+{
+    vel = cap_speed({v_x, v_y}, max_speed);
+}
 
 // update sensors after robot movement
 void Robot::update_sensor(const Terrain &terrain)
@@ -23,10 +27,12 @@ void Robot::transmit_info(const std::weak_ptr<NeighborSensor> sensor) const
     auto neighbors = sensor.lock()->get_neighbors();
     for (auto &neighbor : neighbors)
     {
-        neighbor.lock()->update_from_robot(*this);
+        neighbor->update_from_robot(*this);
     }
 }
 
-void Robot::random_movement()
+void Robot::on_collision(sf::Vector2f force)
 {
+    // changes velocity
+    vel = cap_speed(vel + force, max_speed);
 }

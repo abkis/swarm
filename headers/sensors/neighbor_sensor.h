@@ -5,11 +5,11 @@
 // updates them with any new info
 class NeighborSensor : public Sensor
 {
-    std::vector<std::weak_ptr<Robot>> neighbors;
+    std::vector<Robot *> neighbors;
 
 public:
     NeighborSensor(float range);
     void update(const Robot &robot, const Terrain &terrain) override;
 
-    inline std::vector<std::weak_ptr<Robot>> get_neighbors() const { return neighbors; };
+    inline std::vector<Robot *> get_neighbors() const { return neighbors; };
 };
