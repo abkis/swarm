@@ -1,5 +1,6 @@
 #pragma once
 #include "sensors/sensor.h"
+#include "sensors/neighbor_sensor.h"
 #include "terrain.h"
 
 // base class for robot; simplest kind
@@ -21,4 +22,9 @@ public:
 
     inline float get_direction() const { return direction; };
     inline sf::Vector2f get_posn() const { return posn; };
+
+    void update(const Sensor &sensor, const Terrain &terrain); // update robot info using sensor
+    void update_from_robot(const Robot &robot);                // update robot info from another robot
+
+    void transmit_info(const std::weak_ptr<NeighborSensor> sensor) const; // transmit info to neighbors
 };

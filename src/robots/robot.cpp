@@ -17,6 +17,16 @@ void Robot::add_sensor(std::unique_ptr<Sensor> s)
     sensors.push_back(std::move(s));
 }
 
+void Robot::transmit_info(const std::weak_ptr<NeighborSensor> sensor) const
+{
+    // update neighbors
+    auto neighbors = sensor.lock()->get_neighbors();
+    for (auto &neighbor : neighbors)
+    {
+        neighbor.lock()->update_from_robot(*this);
+    }
+}
+
 void Robot::random_movement()
 {
 }
