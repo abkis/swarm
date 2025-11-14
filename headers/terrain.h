@@ -1,5 +1,5 @@
 #pragma once
-#include "obstacle.h"
+#include "obstacles/obstacle.h"
 #include <memory>
 // handles terrain
 

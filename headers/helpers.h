@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+float mag(sf::Vector2f vec);
+
 sf::Vector2f normalize(sf::Vector2f vec);
 
 float dot(sf::Vector2f a, sf::Vector2f b);

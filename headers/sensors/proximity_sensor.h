@@ -1,3 +1,4 @@
+#pragma once
 #include "sensor.h"
 
 // child class of Sensor
