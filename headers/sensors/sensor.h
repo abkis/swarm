@@ -1,7 +1,7 @@
 #pragma once
-#include "terrain.h"
 
 class Robot; // forward declaration
+class Terrain;
 
 // base sensor class: found in robot
 // handles sensing of environment

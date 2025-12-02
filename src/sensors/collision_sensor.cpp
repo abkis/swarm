@@ -1,4 +1,7 @@
 #include "sensors/collision_sensor.h"
+#include "objects/obstacles/obstacle.h"
+#include "terrain.h"
+#include <SFML/Graphics.hpp>
 
 CollisionSensor::CollisionSensor() : Sensor(0) {}
 

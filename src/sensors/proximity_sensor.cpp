@@ -1,6 +1,6 @@
 #include "sensors/proximity_sensor.h"
 #include <cmath>
-#include "robots/robot.h"
+#include "objects/robots/robot.h"
 
 ProximitySensor::ProximitySensor(float range, float angle) : Sensor(range), angle_offset{angle} {}
 

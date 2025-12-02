@@ -1,5 +1,9 @@
 #pragma once
 #include "sensor.h"
+#include <SFML/Graphics.hpp>
+
+class Robot;
+class Terrain;
 
 // detects collision: location, force, magnitude
 class CollisionSensor : public Sensor

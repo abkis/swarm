@@ -1,5 +1,9 @@
 #pragma once
 #include "sensor.h"
+#include <vector>
+
+class Robot;
+class Terrain;
 
 // senses neighboring robots within a specific radius
 // updates them with any new info

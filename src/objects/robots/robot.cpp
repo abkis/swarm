@@ -1,8 +1,8 @@
-#include "robots/robot.h"
+#include "objects/robots/robot.h"
 #include "helpers.h"
 
-Robot::Robot(float v_x, float v_y, float p_x, float p_y, float size, float direction, float mass, float max_speed, float speed_incr) : max_speed{max_speed}, speed_incr{speed_incr}, mass{mass},
-                                                                                                                                       posn{p_x, p_y}, size{size > 0 ? size : 1}, direction{direction}
+Robot::Robot(float v_x, float v_y, float p_x, float p_y, float size_x, float size_y, float direction, float mass, float max_speed, float speed_incr, sf::Color color) : Object(p_x, p_y, size_x, size_y, color), max_speed{max_speed},
+                                                                                                                                                                        speed_incr{speed_incr}, mass{mass}, direction{direction}
 {
     vel = cap_speed({v_x, v_y}, max_speed);
 }

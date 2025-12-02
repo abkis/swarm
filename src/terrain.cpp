@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "constants.h"
+#include "objects/obstacles/static_obs.h"
 
 Terrain::Terrain(float w, float h, int num_obstacles) : width{w}, height{h}
 {
@@ -48,7 +49,14 @@ Terrain::Terrain(float w, float h, int num_obstacles) : width{w}, height{h}
             }
         }
         // no intersection so ok
-        obstacles.push_back(std::make_unique<Obstacle>(posn, size, sf::Color::Red));
+        obstacles.push_back(std::make_unique<StaticObs>(posn, size, sf::Color::Red));
         --max_loops;
     }
+}
+
+// returns distance to oject if in sensor range. If no object returns -1
+// seeks in direction vector dir for total length (euclidean 2-norm) range starting at position posn
+float Terrain::cast_ray(sf::Vector2f posn, sf::Vector2f dir, float range) const
+{
+    return 0.1;
 }

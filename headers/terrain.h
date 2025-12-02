@@ -1,7 +1,11 @@
 #pragma once
-#include "obstacles/obstacle.h"
+#include "objects/obstacles/obstacle.h"
+#include "objects/robots/robot.h"
 #include <memory>
 // handles terrain
+
+class Obstacle;
+class Robot;
 
 class Terrain
 {
