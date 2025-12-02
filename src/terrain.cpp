@@ -58,5 +58,19 @@ Terrain::Terrain(float w, float h, int num_obstacles) : width{w}, height{h}
 // seeks in direction vector dir for total length (euclidean 2-norm) range starting at position posn
 float Terrain::cast_ray(sf::Vector2f posn, sf::Vector2f dir, float range) const
 {
-    return 0.1;
+    for (auto &obs : obstacles)
+    {
+        if (obs->at_posn(posn, dir, range))
+        {
+            return true;
+        }
+    }
+    for (auto &obs : robots)
+    {
+        if (obs->at_posn(posn, dir, range))
+        {
+            return true;
+        }
+    }
+    return false;
 }

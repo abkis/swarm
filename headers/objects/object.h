@@ -19,6 +19,6 @@ public:
     inline sf::RectangleShape get_shape() const { return shape; }
     inline sf::Color get_color() const { return shape.getFillColor(); }
 
-    bool at_posn(const sf::RectangleShape test_rect) const; // check if intersect object
-    bool at_posn(const sf::Vector2f vect) const;            // check if vector vect intesects object
+    bool at_posn(const sf::RectangleShape test_rect) const;                                 // check if intersect object
+    bool at_posn(const sf::Vector2f posn, const sf::Vector2f dir, const float range) const; // check if vector vect intesects object
 };
