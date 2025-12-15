@@ -94,3 +94,24 @@ std::vector<Robot *> Terrain::find_neighbors(sf::Vector2f posn, float range) con
     }
     return found_robots;
 }
+
+// return pair of obstacle and location where collision occurs
+std::pair<Object *, sf::Vector2f> Terrain::collision(const Robot &robot) const
+{
+    sf::Vector2f loc = robot.get_posn();
+    int id = robot.get_id();
+    for (auto &obj : obstacles)
+    {
+        if (obj->at_posn(robot.get_shape()))
+        {
+            return {obj.get(), loc};
+        }
+    }
+    for (auto &obj : robots)
+    {
+        if (obj->get_id() != id && obj->at_posn(robot.get_shape()))
+        {
+            return {obj.get(), loc};
+        }
+    }
+}

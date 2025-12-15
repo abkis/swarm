@@ -7,7 +7,7 @@ CollisionSensor::CollisionSensor() : Sensor(0) {}
 
 void CollisionSensor::update(const Robot &robot, const Terrain &terrain)
 {
-    std::pair<Obstacle *, sf::Vector2f> info = terrain.collision();
+    std::pair<Obstacle *, sf::Vector2f> info = terrain.collision(robot);
     Obstacle *obs = info.first;
     if (obs == nullptr)
     {
