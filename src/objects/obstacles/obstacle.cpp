@@ -1,5 +1,4 @@
 #include "objects/obstacles/obstacle.h"
-#include "helpers.h"
 
 Obstacle::Obstacle(sf::Vector2f &posn, sf::Vector2f &size, sf::Color color) : Object{posn, size, color}
 

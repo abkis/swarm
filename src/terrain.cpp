@@ -4,6 +4,7 @@
 #include <ctime>
 #include "constants.h"
 #include "objects/obstacles/static_obs.h"
+#include "helpers.h"
 
 Terrain::Terrain(float w, float h, int num_obstacles) : width{w}, height{h}
 {
@@ -73,4 +74,23 @@ float Terrain::cast_ray(sf::Vector2f posn, sf::Vector2f dir, float range) const
         }
     }
     return false;
+}
+
+// called by neighbor_sensor
+// finds neighboring robots to current robot within a specific radius given by "range"
+// returns vector of ptrs to found robots
+std::vector<Robot *> Terrain::find_neighbors(sf::Vector2f posn, float range) const
+{
+    std::vector<Robot *> found_robots;
+    for (auto &robot : robots)
+    {
+        // go thru all robots in terrain and check distance
+        auto loc = robot->get_posn();
+        float dist = helpers::dist(posn, loc);
+        if (dist <= range)
+        {
+            found_robots.push_back(robot.get());
+        }
+    }
+    return found_robots;
 }

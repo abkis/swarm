@@ -4,7 +4,7 @@
 Robot::Robot(float v_x, float v_y, float p_x, float p_y, float size_x, float size_y, float direction, float mass, float max_speed, float speed_incr, sf::Color color) : Object(p_x, p_y, size_x, size_y, color), max_speed{max_speed},
                                                                                                                                                                         speed_incr{speed_incr}, mass{mass}, direction{direction}
 {
-    vel = cap_speed({v_x, v_y}, max_speed);
+    vel = helpers::cap_speed({v_x, v_y}, max_speed);
 }
 
 // update sensors after robot movement
@@ -34,5 +34,5 @@ void Robot::transmit_info(const std::weak_ptr<NeighborSensor> sensor) const
 void Robot::on_collision(sf::Vector2f force)
 {
     // changes velocity
-    vel = cap_speed(vel + force, max_speed);
+    vel = helpers::cap_speed(vel + force, max_speed);
 }

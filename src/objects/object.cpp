@@ -26,11 +26,11 @@ bool Object::at_posn(const sf::RectangleShape test_shape) const
 // determine if vector from posn in direction dir with length range intersects object
 bool Object::at_posn(const sf::Vector2f posn, const sf::Vector2f dir, const float range) const
 {
-    if (mag(dir) == 0)
+    if (helpers::mag(dir) == 0)
     {
         return false; // nothing to check
     }
-    sf::Vector2f unit = normalize(dir); // unit direction vector
+    sf::Vector2f unit = helpers::normalize(dir); // unit direction vector
     // line segment is l(t) = posn + t*unit for 0 <= t <= range
     // use slab method since assuming rectangular shape
     // TODO: update if use other shapes

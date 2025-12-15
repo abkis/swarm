@@ -1,6 +1,6 @@
 #include "sensors/neighbor_sensor.h"
 #include <cmath>
-#include "robots/robot.h"
+#include "objects/robots/robot.h"
 
 NeighborSensor::NeighborSensor(float range) : Sensor(range) {}
 

@@ -1,4 +1,4 @@
-#include "obstacles/static_obs.h"
+#include "objects/obstacles/static_obs.h"
 #include "helpers.h"
 
 StaticObs::StaticObs(sf::Vector2f &posn, sf::Vector2f &size, sf::Color color, float elastic) : Obstacle(posn, size, color), elastic{elastic} {}
@@ -17,8 +17,8 @@ sf::Vector2f StaticObs::collision_force(const Robot &robot, sf::Vector2f posn) c
     sf::Vector2f vel = robot.get_vel(); // velocity before collision
     sf::Vector2f center = robot.get_posn();
 
-    sf::Vector2f unit = normalize(center - posn);
-    float norm = dot(vel, unit);
+    sf::Vector2f unit = helpers::normalize(center - posn);
+    float norm = helpers::dot(vel, unit);
     float m = robot.get_mass();
     float impulse = -(1 + elastic) * norm * m;
     return (impulse / m) * unit;
